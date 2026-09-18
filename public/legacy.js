@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-location-assign-relative-destination */
 // Scroll-reveal animations
 const revealEls = document.querySelectorAll('.reveal');
 if ('IntersectionObserver' in window) {
@@ -97,16 +98,78 @@ if (filterBar) {
   });
 }
 
-// Contact form (contact.html only) — demo-only, no backend wired up
+async function mentalAlchemyApi(path, options = {}) {
+  const response = await fetch(`/api${path}`, {
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      ...(options.headers || {})
+    },
+    credentials: 'same-origin'
+  });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    const error = new Error(payload.error || 'Something went wrong. Please try again.');
+    error.code = payload.code;
+    error.status = response.status;
+    throw error;
+  }
+  return payload;
+}
+
+function isBackendUnavailable(error) {
+  return error && (error.code === 'BACKEND_NOT_CONFIGURED' || error.status === 503);
+}
+
+function setFormError(element, message) {
+  if (!element) return;
+  element.textContent = message;
+  element.hidden = !message;
+}
+
+// Contact form (contact.html only)
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const successMsg = document.getElementById('form-success');
-    contactForm.reset();
-    if (successMsg) {
-      successMsg.hidden = false;
-      successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    const errorMsg = document.getElementById('contact-error');
+    const submitButton = contactForm.querySelector('[type="submit"]');
+    const values = new FormData(contactForm);
+    setFormError(errorMsg, '');
+    if (successMsg) successMsg.hidden = true;
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending…';
+
+    try {
+      await mentalAlchemyApi('/contact', {
+        method: 'POST',
+        body: JSON.stringify({
+          name: values.get('name'),
+          email: values.get('email'),
+          reason: values.get('reason'),
+          message: values.get('message'),
+          website: values.get('website')
+        })
+      });
+      contactForm.reset();
+      if (successMsg) {
+        successMsg.hidden = false;
+        successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    } catch (error) {
+      if (isBackendUnavailable(error)) {
+        contactForm.reset();
+        if (successMsg) {
+          successMsg.textContent = 'Demo submitted. Connect Supabase to store and manage contact messages.';
+          successMsg.hidden = false;
+        }
+      } else {
+        setFormError(errorMsg, error.message);
+      }
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = 'Send message';
     }
   });
 }
@@ -142,25 +205,58 @@ if (signupForm) {
   pw.addEventListener('input', checkMatch);
   confirm.addEventListener('input', checkMatch);
 
-  signupForm.addEventListener('submit', (e) => {
+  signupForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!checkMatch()) {
       confirm.focus();
       return;
     }
     const successMsg = document.getElementById('signup-success');
-    signupForm.reset();
-    if (successMsg) {
-      successMsg.hidden = false;
-      successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    const errorMsg = document.getElementById('signup-error');
+    const submitButton = signupForm.querySelector('[type="submit"]');
+    setFormError(errorMsg, '');
+    if (successMsg) successMsg.hidden = true;
+    submitButton.disabled = true;
+    submitButton.textContent = 'Creating account…';
+
+    try {
+      const result = await mentalAlchemyApi('/auth/signup', {
+        method: 'POST',
+        body: JSON.stringify({
+          fullName: document.getElementById('full-name').value,
+          email: document.getElementById('signup-email').value,
+          password: pw.value
+        })
+      });
+      signupForm.reset();
+      if (successMsg) {
+        successMsg.textContent = result.needsEmailConfirmation
+          ? 'Account created. Check your email to confirm your address, then log in.'
+          : 'Account created. You can now continue to your dashboard.';
+        successMsg.hidden = false;
+        successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    } catch (error) {
+      if (isBackendUnavailable(error)) {
+        signupForm.reset();
+        if (successMsg) {
+          successMsg.textContent = 'Demo account created. Connect Supabase to enable real authentication.';
+          successMsg.hidden = false;
+        }
+      } else {
+        setFormError(errorMsg, error.message);
+      }
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = 'Create account';
     }
   });
 }
 
-// Login form (login.html) — demo only, redirects to dashboard on submit
+// Login form (login.html)
 const loginForm = document.getElementById('login-form');
 if (loginForm) {
-  loginForm.addEventListener('submit', (e) => {
+  loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = document.getElementById('login-email');
     const password = document.getElementById('login-password');
@@ -170,9 +266,24 @@ if (loginForm) {
       return;
     }
     if (errorMsg) errorMsg.hidden = true;
-    // This legacy form intentionally performs a full navigation after login.
-    // eslint-disable-next-line @next/next/no-location-assign-relative-destination
-    window.location.href = '/dashboard';
+    const submitButton = loginForm.querySelector('[type="submit"]');
+    submitButton.disabled = true;
+    submitButton.textContent = 'Logging in…';
+    try {
+      await mentalAlchemyApi('/auth/login', {
+        method: 'POST',
+        body: JSON.stringify({ email: email.value, password: password.value })
+      });
+      window.location.href = '/dashboard';
+    } catch (error) {
+      if (isBackendUnavailable(error)) {
+        window.location.href = '/dashboard';
+        return;
+      }
+      setFormError(errorMsg, error.message);
+      submitButton.disabled = false;
+      submitButton.textContent = 'Log in';
+    }
   });
 }
 
@@ -192,6 +303,19 @@ if (appSidebar && appSidebarToggle) {
     appSidebarToggle.setAttribute('aria-expanded', isOpen);
   });
   appSidebarOverlay.addEventListener('click', closeAppSidebar);
+}
+
+const logoutLink = document.querySelector('.logout-link');
+if (logoutLink) {
+  logoutLink.addEventListener('click', async (event) => {
+    event.preventDefault();
+    try {
+      await mentalAlchemyApi('/auth/logout', { method: 'POST' });
+    } catch (error) {
+      if (!isBackendUnavailable(error)) return;
+    }
+    window.location.href = '/';
+  });
 }
 
 // Helper: is this page running inside WordPress with the Harbor plugin active?
@@ -334,12 +458,28 @@ if (moodOptions) {
       btn.classList.add('selected');
       const message = responses[btn.dataset.mood] || 'Thanks — logged for today.';
 
+      let savedRemotely = false;
       if (harborIsLive()) {
         try {
           await harborApi('mood', { method: 'POST', body: JSON.stringify({ mood: btn.dataset.mood }) });
-        } catch (e) { /* fall through to local save below regardless */ }
+          savedRemotely = true;
+        } catch (e) { /* fall through to the Next.js API */ }
       }
-      harborSaveMoodEntry(btn.dataset.mood);
+      if (!savedRemotely) {
+        try {
+          await mentalAlchemyApi('/mood', { method: 'POST', body: JSON.stringify({ mood: btn.dataset.mood }) });
+          savedRemotely = true;
+        } catch (error) {
+          if (!isBackendUnavailable(error) && error.status !== 401) {
+            if (moodResponse) {
+              moodResponse.textContent = error.message;
+              moodResponse.hidden = false;
+            }
+            return;
+          }
+        }
+      }
+      if (!savedRemotely) harborSaveMoodEntry(btn.dataset.mood);
       if (moodResponse) { moodResponse.textContent = message; moodResponse.hidden = false; }
     });
   });
@@ -384,11 +524,26 @@ if (sessionCard) {
     }
   };
 
+  const normalizeAppointments = (appointments) => appointments.map((appointment) => ({
+    ...appointment,
+    appointment_datetime: appointment.appointment_datetime || appointment.appointment_at,
+    therapist_name: appointment.therapist_name || appointment.therapists?.name,
+    therapist_photo: appointment.therapist_photo || appointment.therapists?.photo_url
+  }));
+
   if (harborIsLive()) {
     harborApi('appointments').then(renderFromAppointments)
       .catch(() => renderFromAppointments(harborGetAppointments()));
   } else {
-    renderFromAppointments(harborGetAppointments());
+    mentalAlchemyApi('/appointments')
+      .then((result) => renderFromAppointments(normalizeAppointments(result.appointments || [])))
+      .catch((error) => {
+        if (isBackendUnavailable(error) || error.status === 401) {
+          renderFromAppointments(harborGetAppointments());
+        } else {
+          renderFromAppointments([]);
+        }
+      });
   }
 }
 
@@ -430,12 +585,14 @@ if (bookingStepper) {
   let therapistCards = [];
 
   function renderTherapistCard(t) {
-    const specialties = (t.specialties || '').toLowerCase();
+    const specialties = Array.isArray(t.specialties) ? t.specialties.join(',') : (t.specialties || '');
+    const role = t.role || t.credentials || '';
+    const photo = t.photo || t.photo_url || '';
     return `
-      <button class="booking-therapist-card" data-id="${t.id ?? ''}" data-name="${t.name}" data-role="${t.role}" data-specialties="${specialties.replace(/,/g, ' ')}" data-photo="${t.photo}">
-        <img src="${t.photo}" alt="${t.name}">
+      <button class="booking-therapist-card" data-id="${t.id ?? ''}" data-name="${t.name}" data-role="${role}" data-specialties="${specialties.toLowerCase().replace(/,/g, ' ')}" data-photo="${photo}">
+        <img src="${photo}" alt="${t.name}">
         <h3>${t.name}</h3>
-        <p class="t-role">${t.role}</p>
+        <p class="t-role">${role}</p>
         <div class="t-tags">${specialties.split(',').filter(Boolean).slice(0, 2).map((s) => `<span>${s.trim()}</span>`).join('')}</div>
         <span class="select-check" aria-hidden="true">✓</span>
       </button>`;
@@ -490,10 +647,19 @@ if (bookingStepper) {
         bookingGrid.innerHTML = '<p style="color:var(--ink-soft);">Could not load therapists right now. Please refresh.</p>';
       });
   } else {
-    // Standalone preview — use the hardcoded cards already in the HTML.
+    // The hardcoded cards remain as the offline/demo fallback.
     bindTherapistCards();
     bindFilterBar();
     preselectTherapistFromUrl();
+    mentalAlchemyApi('/therapists')
+      .then((result) => {
+        if (!result.therapists?.length) return;
+        bookingGrid.innerHTML = result.therapists.map(renderTherapistCard).join('');
+        bindTherapistCards();
+        bindFilterBar();
+        preselectTherapistFromUrl();
+      })
+      .catch(() => {});
   }
 
   // Lets "Book with [Therapist]" links (e.g. from therapists.html) land on
@@ -645,9 +811,11 @@ if (bookingStepper) {
     confirmBtn.disabled = true;
     confirmBtn.textContent = 'Booking…';
 
+    let savedRemotely = false;
     if (harborIsLive()) {
       try {
         await harborApi('appointments', { method: 'POST', body: JSON.stringify(payload) });
+        savedRemotely = true;
       } catch (e) {
         confirmBtn.disabled = false;
         confirmBtn.textContent = 'Confirm booking';
@@ -656,9 +824,32 @@ if (bookingStepper) {
       }
     }
 
-    // Always persist locally too, so the dashboard reflects it immediately —
-    // this is what makes the booking real even with no backend at all.
-    harborSaveAppointment(payload);
+    if (!savedRemotely) {
+      try {
+        await mentalAlchemyApi('/appointments', {
+          method: 'POST',
+          body: JSON.stringify({
+            therapistId: state.therapist.id,
+            appointmentAt: appointmentDate.toISOString(),
+            sessionType: state.sessionType,
+            notes: payload.notes,
+            guestName: payload.client_name,
+            guestEmail: payload.client_email,
+            guestPhone: payload.client_phone
+          })
+        });
+        savedRemotely = true;
+      } catch (error) {
+        if (!isBackendUnavailable(error)) {
+          confirmBtn.disabled = false;
+          confirmBtn.textContent = 'Confirm booking';
+          alert(error.message);
+          return;
+        }
+      }
+    }
+
+    if (!savedRemotely) harborSaveAppointment(payload);
 
     confirmBtn.disabled = false;
     confirmBtn.textContent = 'Confirm booking';

@@ -1,0 +1,170 @@
+<header id="site-header">
+  <nav class="container">
+    <a href="/" class="logo">
+      <img src="/assets/images/logo.jpeg">
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/#services">Services</a>
+      <a href="/therapists">Therapists</a>
+      <a href="/contact">Contact</a>
+    
+    </div>
+    <a href="/login" class="btn btn-primary btn-small">Log In</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero directory-hero">
+    <div class="hero-photo-bg" aria-hidden="true">
+      <img src="/assets/images/img3.jpg" alt="">
+    </div>
+    <div class="hero-blobs" aria-hidden="true">
+      <span class="blob blob-1"></span>
+      <span class="blob blob-2"></span>
+      <span class="blob blob-3"></span>
+    </div>
+    <div class="container hero-content">
+      <span class="badge reveal" data-delay="0">Over 10+ licensed therapists</span>
+      <h1 class="reveal" data-delay="1">Browse therapists, or let us <em>match you</em> instead</h1>
+      <p class="hero-sub reveal" data-delay="2">Filter by what you're looking for below, or skip straight to our 3-minute match if you'd rather we do the narrowing down for you.</p>
+      <div class="hero-actions reveal" data-delay="3">
+        <a href="/booking" class="btn btn-primary">Book an Appointment</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTER BAR -->
+  <section class="filter-section">
+    <div class="container">
+      <div class="filter-bar reveal" id="filter-bar">
+        <button class="filter-pill active" data-filter="all">All specialties</button>
+        <button class="filter-pill" data-filter="anxiety">Anxiety</button>
+        <button class="filter-pill" data-filter="trauma">Trauma</button>
+        <button class="filter-pill" data-filter="couples">Couples</button>
+        <button class="filter-pill" data-filter="teens">Teens</button>
+        <button class="filter-pill" data-filter="depression">Depression</button>
+        <button class="filter-pill" data-filter="grief">Grief</button>
+        <button class="filter-pill" data-filter="adhd">ADHD</button>
+      </div>
+      <p class="filter-count" id="filter-count">Showing all 5 therapists</p>
+    </div>
+  </section>
+
+  <!-- DIRECTORY GRID -->
+  <section class="directory">
+    <div class="container">
+      <div class="therapist-grid directory-grid" id="therapist-grid">
+
+        <div class="therapist-card directory-card reveal" data-delay="0" data-specialties="anxiety trauma">
+          <div class="t-photo"><img src="/assets/images/rs=w_984,h_1043.webp" alt="Dr. Naomi Reyes, licensed clinical psychologist" loading="lazy"></div>
+          <h3>Dr. Naomi Reyes</h3>
+          <div class="t-role">Clinical Psychologist, PsyD</div>
+          <p class="t-bio">12 years in practice. Specializes in anxiety, trauma, and EMDR.</p>
+          <div class="t-tags"><span>Anxiety</span><span>Trauma</span><span>EMDR</span></div>
+        </div>
+
+        <div class="therapist-card directory-card reveal" data-delay="1" data-specialties="couples grief">
+          <div class="t-photo"><img src="/assets/images/rs=w_984,h_1515.webp" alt="Marcus Webb, licensed marriage and family therapist" loading="lazy"></div>
+          <h3>Marcus Webb</h3>
+          <div class="t-role">Marriage & Family Therapist, LMFT</div>
+          <p class="t-bio">8 years in practice. Focuses on couples, family systems, and grief.</p>
+          <div class="t-tags"><span>Couples</span><span>Family</span><span>Grief</span></div>
+        </div>
+
+        <div class="therapist-card directory-card reveal" data-delay="2" data-specialties="depression teens adhd">
+          <div class="t-photo"><img src="/assets/images/rs=w_984,h_985.webp" alt="Priya Anand, licensed clinical social worker" loading="lazy"></div>
+          <h3>Priya Anand</h3>
+          <div class="t-role">Clinical Social Worker, LCSW</div>
+          <p class="t-bio">6 years in practice. Works with teens, ADHD, and depression.</p>
+          <div class="t-tags"><span>Depression</span><span>Teens</span><span>ADHD</span></div>
+        </div>
+
+        <div class="therapist-card directory-card reveal" data-delay="0" data-specialties="anxiety depression">
+          <div class="t-photo"><img src="/assets/images/rs=w_984,h_967.webp" alt="James Okafor, licensed professional counselor" loading="lazy"></div>
+          <h3>James Okafor</h3>
+          <div class="t-role">Licensed Professional Counselor, LPC</div>
+          <p class="t-bio">10 years in practice. Focuses on anxiety, depression, and burnout.</p>
+          <div class="t-tags"><span>Anxiety</span><span>Depression</span><span>Burnout</span></div>
+        </div>
+
+        <div class="therapist-card directory-card reveal" data-delay="1" data-specialties="trauma grief">
+          <div class="t-photo"><img src="/assets/images/rs=w_984,h_841.webp" alt="Dr. Sofia Lang, licensed clinical psychologist" loading="lazy"></div>
+          <h3>Dr. Sofia Lang</h3>
+          <div class="t-role">Clinical Psychologist, PhD</div>
+          <p class="t-bio">15 years in practice. Specializes in grief, trauma, and life transitions.</p>
+          <div class="t-tags"><span>Trauma</span><span>Grief</span><span>Life transitions</span></div>
+        </div>
+
+        <div class="browse-card reveal" data-delay="2">
+          <h3>10+ more therapists</h3>
+          <p>Answer a few questions and we'll narrow the full directory down to your best 3 to 5 matches.</p>
+          <a href="/#start" class="btn btn-primary btn-small">Get matched free</a>
+        </div>
+
+      </div>
+      <p class="no-results" id="no-results" hidden>No therapists match that combination of filters yet. 
+        Try removing one, or let us match you directly.</p>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta" id="start">
+    <div class="container final-cta-inner">
+      <span class="eyebrow reveal">Not sure who to pick?</span>
+      <h2 class="reveal">Let Mental Alchemy narrow it down for you.</h2>
+      <p class="reveal">Answer a few questions and get 3 to 5 tailored matches in about three minutes.</p>
+      <a href="#" class="btn btn-primary reveal">Take the free match →</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="logo">
+        <img src="/assets/images/logo.jpeg">
+        </a>
+        <p>A safe place to start, whenever you're ready. Licensed therapists, matched with care.</p>
+         <div class="footer-social" aria-label="Social links">
+          <a href="#" aria-label="Instagram"><img src="/assets/images/download.jfif"></a>
+          <a href="#" aria-label="Facebook"><img src="/assets/images/linkedin.jpg"></a>
+          <a href="#" aria-label="LinkedIn"><img src="/assets/images/download.png"></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <span class="eyebrow">Get started</span>
+        <a href="/#start">Find a therapist</a>
+        <a href="/#services">Our services</a>
+        <a href="/#how-it-works">How matching works</a>
+      </div>
+      <div class="footer-col">
+        <span class="eyebrow">Support</span>
+        <a href="/#faq">Help center</a>
+        <a href="#">Crisis resources</a>
+        <a href="/contact">Contact us</a>
+      </div>
+      <div class="footer-col">
+        <span class="eyebrow">Company</span>
+        <a href="/about">About Mental Alchemy</a>
+        <a href="#">For therapists</a>
+        <a href="#">Privacy policy</a>
+      </div>
+    </div>
+    <div class="footer-crisis">
+      If you're in crisis or thinking about suicide, call or text <strong>988</strong> (US)free and available 24/7.
+    </div>
+    <div class="footer-bottom">
+      <span>© 2022 Mental Alchemy, Inc. All rights reserved.</span>
+      <span>Licensed clinicians in all 50 states.</span>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,94 @@
+<header id="site-header">
+  <nav class="container">
+    <a href="/" class="logo">
+    <img src="/assets/images/logo.jpeg">  
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/#services">Services</a>
+      <a href="/therapists">Therapists</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <a href="/signup" class="btn btn-primary btn-small">Sign up</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- LOG IN -->
+  <section class="auth-section">
+    <div class="hero-blobs" aria-hidden="true">
+      <span class="blob blob-1"></span>
+      <span class="blob blob-2"></span>
+      <span class="blob blob-3"></span>
+    </div>
+
+    <div class="auth-wrap">
+
+      <div class="auth-card reveal in-view">
+        <span class="badge">Welcome back</span>
+        <h1>Log in to Mental Alchemy</h1>
+        <p class="auth-sub">Pick up where you left off messages, sessions,and your care plan are all here.</p>
+
+        <div class="auth-divider"><span>or log in with email</span></div>
+
+        <form id="login-form" novalidate>
+          <div class="form-field">
+            <label for="login-email">Email address</label>
+            <input type="email" id="login-email" name="email" placeholder="jamie@email.com" required autocomplete="email">
+          </div>
+          <div class="form-field">
+            <label for="login-password">Password</label>
+            <div class="password-wrap">
+              <input type="password" id="login-password" name="password" placeholder="Enter your password" required autocomplete="current-password">
+              <button type="button" class="toggle-visibility" data-target="login-password" aria-label="Show password">Show</button>
+            </div>
+          </div>
+
+          <div class="login-options">
+            <label class="checkbox-row" style="margin:0;">
+              <input type="checkbox" id="remember-me" name="remember-me">
+              <span>Remember me</span>
+            </label>
+            <a href="#" class="forgot-link">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full">Log in</button>
+          <p class="form-error" id="login-error" hidden>Enter your email and password to continue.</p>
+        </form>
+
+        <p class="auth-switch">Don't have an account? <a href="/signup">Sign up</a></p>
+      </div>
+
+      <div class="auth-aside reveal in-view" data-delay="1">
+        <span class="eyebrow" style="color:var(--gold-dark);">While you're away</span>
+        <ul class="auth-points">
+          <li><span class="point-icon">✓</span>Message your therapist directly between sessions</li>
+          <li><span class="point-icon">✓</span>Reschedule or join a session in one tap</li>
+          <li><span class="point-icon">✓</span>Track how you've been feeling, week to week</li>
+          <li><span class="point-icon">✓</span>Everything stays encrypted and private</li>
+        </ul>
+        <blockquote>"Having everything messages, scheduling, notes in one calm place made it so much easier to actually keep going."</blockquote>
+        <cite>Jordan T.,Mental Alchemy member</cite>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="auth-footer">
+  <div class="container">
+    <p class="footer-crisis" style="border:none; padding:0 0 18px;">If you're in crisis or 
+        thinking about suicide, 
+        call or text <strong>988</strong> (US) free and available 24/7.</p>
+    <div class="footer-bottom" style="padding:18px 0 0; border-top:1px solid var(--line);">
+      <span>© 2022 Mental Alchemy, Inc. All rights reserved.</span>
+      <span><a href="/">Home</a> · <a href="/contact">Contact</a> · <a href="#">Privacy policy</a></span>
+    </div>
+  </div>
+</footer>

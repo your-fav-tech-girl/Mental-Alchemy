@@ -1,0 +1,270 @@
+<header id="site-header">
+  <nav class="container">
+    <a href="/" class="logo">
+       <img src="/assets/images/logo.jpeg">
+    </a>
+    <div class="nav-links" id="nav-links">
+       <a href="/">Home</a>
+        <a href="/about">About</a>
+      <a href="/#services">Services</a>
+      <a href="/therapists">Therapists</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <a href="/login" class="btn btn-ghost btn-small">Log in</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="hero booking-hero">
+    <div class="hero-photo-bg" aria-hidden="true">
+      <img src="/assets/images/img6.jpg" alt="">
+    </div>
+    <div class="hero-blobs" aria-hidden="true">
+      <span class="blob blob-1"></span>
+      <span class="blob blob-2"></span>
+      <span class="blob blob-3"></span>
+    </div>
+    <div class="container hero-content">
+      <span class="badge reveal in-view">No account needed to get started</span>
+
+      <h1 class="reveal in-view">Book your <em>first session</em></h1>
+      <p class="hero-sub reveal in-view">Pick a therapist, find a time that works,
+         and you're set. We'll email your confirmation, you can create an account afterward 
+         if you'd like to manage things online.</p>
+    </div>
+  </section>
+
+  <section class="booking-public-section">
+    <div class="container" style="max-width:900px;">
+
+      <!-- STEP PROGRESS -->
+      <div class="booking-stepper" id="booking-stepper">
+        <div class="step-item active" data-step="1">
+          <span class="step-circle">1</span>
+          <span class="step-label">Choose therapist</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item" data-step="2">
+          <span class="step-circle">2</span>
+          <span class="step-label">Pick a time</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item" data-step="3">
+          <span class="step-circle">3</span>
+          <span class="step-label">Your details</span>
+        </div>
+      </div>
+
+      <!-- STEP 1: CHOOSE THERAPIST -->
+      <section class="booking-step" id="step-1" data-step-panel="1">
+        <div class="booking-step-head">
+          <h2>Who would you like to see?</h2>
+          <p>Select a therapist to check their available times, or filter by specialty first.</p>
+        </div>
+
+        <div class="filter-bar" id="booking-filter-bar" style="justify-content:flex-start; margin-bottom:28px;">
+          <button class="filter-pill active" data-filter="all">All specialties</button>
+          <button class="filter-pill" data-filter="anxiety">Anxiety</button>
+          <button class="filter-pill" data-filter="trauma">Trauma</button>
+          <button class="filter-pill" data-filter="couples">Couples</button>
+          <button class="filter-pill" data-filter="depression">Depression</button>
+          <button class="filter-pill" data-filter="grief">Grief</button>
+        </div>
+
+        <div class="booking-therapist-grid" id="booking-therapist-grid">
+
+          <button class="booking-therapist-card" data-name="Dr. Naomi Reyes" data-role="Clinical Psychologist, PsyD" data-specialties="anxiety trauma" data-photo="https://images.unsplash.com/photo-1749222013825-fe2025dcf0cf?fm=jpg&q=80&w=400&auto=format&fit=crop">
+            <img src="https://images.unsplash.com/photo-1749222013825-fe2025dcf0cf?fm=jpg&q=80&w=400&auto=format&fit=crop" alt="Dr. Naomi Reyes">
+            <h3>Dr. Naomi Reyes</h3>
+            <p class="t-role">Clinical Psychologist, PsyD</p>
+            <div class="t-tags"><span>Anxiety</span><span>Trauma</span></div>
+            <span class="select-check" aria-hidden="true">✓</span>
+          </button>
+
+          <button class="booking-therapist-card" data-name="Marcus Webb" data-role="Marriage &amp; Family Therapist, LMFT" data-specialties="couples grief" data-photo="https://images.unsplash.com/photo-1750044010283-bcfab7777e26?fm=jpg&q=80&w=400&auto=format&fit=crop">
+            <img src="https://images.unsplash.com/photo-1750044010283-bcfab7777e26?fm=jpg&q=80&w=400&auto=format&fit=crop" alt="Marcus Webb">
+            <h3>Marcus Webb</h3>
+            <p class="t-role">Marriage &amp; Family Therapist, LMFT</p>
+            <div class="t-tags"><span>Couples</span><span>Grief</span></div>
+            <span class="select-check" aria-hidden="true">✓</span>
+          </button>
+
+          <button class="booking-therapist-card" data-name="Priya Anand" data-role="Clinical Social Worker, LCSW" data-specialties="depression" data-photo="https://images.unsplash.com/photo-1559433804-f883aa33026a?fm=jpg&q=80&w=400&auto=format&fit=crop">
+            <img src="https://images.unsplash.com/photo-1559433804-f883aa33026a?fm=jpg&q=80&w=400&auto=format&fit=crop" alt="Priya Anand">
+            <h3>Priya Anand</h3>
+            <p class="t-role">Clinical Social Worker, LCSW</p>
+            <div class="t-tags"><span>Depression</span><span>Teens</span></div>
+            <span class="select-check" aria-hidden="true">✓</span>
+          </button>
+
+          <button class="booking-therapist-card" data-name="James Okafor" data-role="Licensed Professional Counselor, LPC" data-specialties="anxiety depression" data-photo="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?fm=jpg&q=80&w=400&auto=format&fit=crop">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?fm=jpg&q=80&w=400&auto=format&fit=crop" alt="James Okafor">
+            <h3>James Okafor</h3>
+            <p class="t-role">Licensed Professional Counselor, LPC</p>
+            <div class="t-tags"><span>Anxiety</span><span>Burnout</span></div>
+            <span class="select-check" aria-hidden="true">✓</span>
+          </button>
+
+          <button class="booking-therapist-card" data-name="Dr. Sofia Lang" data-role="Clinical Psychologist, PhD" data-specialties="trauma grief" data-photo="https://images.unsplash.com/photo-1708448903646-fc3ba372cbc7?fm=jpg&q=80&w=400&auto=format&fit=crop">
+            <img src="https://images.unsplash.com/photo-1708448903646-fc3ba372cbc7?fm=jpg&q=80&w=400&auto=format&fit=crop" alt="Dr. Sofia Lang">
+            <h3>Dr. Sofia Lang</h3>
+            <p class="t-role">Clinical Psychologist, PhD</p>
+            <div class="t-tags"><span>Trauma</span><span>Grief</span></div>
+            <span class="select-check" aria-hidden="true">✓</span>
+          </button>
+
+        </div>
+
+        <div class="booking-nav">
+          <span></span>
+          <button class="btn btn-primary" id="to-step-2" disabled>Continue →</button>
+        </div>
+      </section>
+
+      <!-- STEP 2: PICK TIME -->
+      <section class="booking-step" id="step-2" data-step-panel="2" hidden>
+        <div class="booking-step-head">
+          <h2>Pick a day and time</h2>
+          <p id="step2-sub">Showing availability for your selected therapist.</p>
+        </div>
+
+        <div class="session-type-toggle" id="session-type-toggle">
+          <button class="type-pill active" data-type="Video session">Video session</button>
+          <button class="type-pill" data-type="In-person">In-person</button>
+        </div>
+
+        <div class="day-picker" id="day-picker"></div>
+        <div class="time-grid" id="time-grid"></div>
+
+        <div class="booking-nav">
+          <button class="btn btn-ghost" id="back-to-step-1">← Back</button>
+          <button class="btn btn-primary" id="to-step-3" disabled>Continue →</button>
+        </div>
+      </section>
+
+      <!-- STEP 3: YOUR DETAILS + CONFIRM -->
+      <section class="booking-step" id="step-3" data-step-panel="3" hidden>
+        <div class="booking-step-head">
+          <h2>Almost done</h2>
+          <p>Just need a way to reach you — no password or account required.</p>
+        </div>
+
+        <div class="confirm-layout">
+          <div class="confirm-summary">
+            <div class="confirm-therapist">
+              <img id="confirm-photo" src="" alt="">
+              <div>
+                <h3 id="confirm-name"></h3>
+                <p id="confirm-role"></p>
+              </div>
+            </div>
+            <div class="confirm-detail">
+              <span>Date &amp; time</span>
+              <strong id="confirm-datetime"></strong>
+            </div>
+            <div class="confirm-detail">
+              <span>Session type</span>
+              <strong id="confirm-type"></strong>
+            </div>
+            <div class="confirm-detail">
+              <span>Estimated cost</span>
+              <strong>$40 copay <span class="confirm-note">(billed after insurance)</span></strong>
+            </div>
+          </div>
+
+          <div class="confirm-form">
+            <div class="form-row">
+              <div class="form-field">
+                <label for="guest-name">Full name</label>
+                <input type="text" id="guest-name" placeholder="Jamie Rivera" required>
+              </div>
+              <div class="form-field">
+                <label for="guest-phone">Phone number</label>
+                <input type="tel" id="guest-phone" placeholder="(555) 123-4567">
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="guest-email">Email address</label>
+              <input type="email" id="guest-email" placeholder="jamie@email.com" required>
+            </div>
+            <div class="form-field">
+              <label for="booking-reason">What would you like to focus on? (optional)</label>
+              <textarea id="booking-reason" rows="3" placeholder="Anything you'd like your therapist to know ahead of the session..."></textarea>
+            </div>
+            <label class="checkbox-row">
+              <input type="checkbox" id="cancellation-policy" required>
+              <span>I understand sessions can be rescheduled free up to 24 hours in advance, and agree to be contacted about this appointment.</span>
+            </label>
+            <button class="btn btn-primary btn-full" id="confirm-booking-btn">Confirm booking</button>
+            <p class="form-note" style="text-align:center; margin-top:14px;">If you're in crisis, please call or text 988 instead of booking here — this isn't a same-day or emergency service.</p>
+          </div>
+        </div>
+
+        <div class="booking-nav">
+          <button class="btn btn-ghost" id="back-to-step-2">← Back</button>
+          <span></span>
+        </div>
+      </section>
+
+      <!-- SUCCESS -->
+      <section class="booking-success" id="booking-success" hidden>
+        <div class="success-icon">✓</div>
+        <h2>You're booked</h2>
+        <p id="success-summary"></p>
+        <div class="success-actions">
+          <a href="/signup" class="btn btn-primary">Create an account to manage it</a>
+          <a href="/" class="btn btn-ghost">Back to home</a>
+        </div>
+      </section>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="logo">
+    <img src="/assets/images/logo.jpeg">  
+    </a>
+        <p>A safe place to start, whenever you're ready. Licensed therapists, matched with care.</p>
+       <div class="footer-social" aria-label="Social links">
+          <a href="#" aria-label="Instagram"><img src="/assets/images/download.jfif"></a>
+          <a href="#" aria-label="Facebook"><img src="/assets/images/linkedin.jpg"></a>
+          <a href="#" aria-label="LinkedIn"><img src="/assets/images/download.png"></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <span class="eyebrow">Get started</span>
+        <a href="/booking">Book a therapist</a>
+        <a href="/#services">Our services</a>
+        <a href="/#how-it-works">How matching works</a>
+      </div>
+      <div class="footer-col">
+        <span class="eyebrow">Support</span>
+        <a href="/#faq">Help center</a>
+        <a href="#">Crisis resources</a>
+        <a href="/contact">Contact us</a>
+      </div>
+      <div class="footer-col">
+        <span class="eyebrow">Company</span>
+        <a href="/about">About Mental Therapy</a>
+        <a href="#">For therapists</a>
+        <a href="#">Privacy policy</a>
+      </div>
+    </div>
+    <div class="footer-crisis">
+      If you're in crisis or thinking about suicide, call or text <strong>988</strong> (US) free and available 24/7.
+    </div>
+    <div class="footer-bottom">
+      <span>© 2022 Mental Alchemy, Inc. All rights reserved.</span>
+      <span>Licensed clinicians in all 50 states.</span>
+    </div>
+  </div>
+</footer>

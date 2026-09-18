@@ -1,0 +1,22 @@
+{
+  "name": "mental-alchemy-next",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "test": "node tests/interactions.test.mjs"
+  },
+  "dependencies": {
+    "next": "^16.3.5",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "jsdom": "latest"
+  }
+}

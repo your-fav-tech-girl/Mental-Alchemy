@@ -1,0 +1,194 @@
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="app-sidebar" id="app-sidebar">
+    <a href="/" class="logo app-logo">
+      <img src="/assets/images/logo.jpeg">
+    </a>
+
+    <nav class="app-nav">
+      <a href="/dashboard" class="app-nav-item active">
+        <svg viewBox="0 0 20 20" fill="none"><rect x="2.5" y="2.5" width="6.5" height="6.5" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="11" y="2.5" width="6.5" height="6.5" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="2.5" y="11" width="6.5" height="6.5" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="11" y="11" width="6.5" height="6.5" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+        Overview
+      </a>
+      <a href="/booking" class="app-nav-item">
+        <svg viewBox="0 0 20 20" fill="none"><rect x="2.5" y="4" width="15" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2.5 8h15M6.5 2.5v3M13.5 2.5v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Appointments
+      </a>
+      <a href="#" class="app-nav-item">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M2.5 5.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H8l-4 3v-3H4.5a2 2 0 0 1-2-2v-7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        Messages
+        <span class="nav-badge">2</span>
+      </a>
+      <a href="#" class="app-nav-item">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M4 3.5h9l3 3v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-12a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M6.5 9h6M6.5 12.5h6M6.5 5.5h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Resources
+      </a>
+      <a href="#" class="app-nav-item">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M11.5 2.5h-3l-.4 2.3a6 6 0 0 0-1.6.9l-2.2-.8-1.5 2.6 1.8 1.5a6 6 0 0 0 0 1.8l-1.8 1.5 1.5 2.6 2.2-.8c.5.4 1 .7 1.6.9l.4 2.3h3l.4-2.3c.6-.2 1.1-.5 1.6-.9l2.2.8 1.5-2.6-1.8-1.5a6 6 0 0 0 0-1.8l1.8-1.5-1.5-2.6-2.2.8a6 6 0 0 0-1.6-.9l-.4-2.3z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="10" cy="10" r="2.3" stroke="currentColor" stroke-width="1.4"/></svg>
+        Billing &amp; insurance
+      </a>
+      <a href="#" class="app-nav-item">
+        <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="6.5" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 17c0-3.6 3.1-6 7-6s7 2.4 7 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Account settings
+      </a>
+    </nav>
+
+    <a href="/" class="app-nav-item logout-link">
+      <svg viewBox="0 0 20 20" fill="none"><path d="M7.5 17.5h-3a1.5 1.5 0 0 1-1.5-1.5v-12A1.5 1.5 0 0 1 4.5 2.5h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M13 14l4-4-4-4M17 10H7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Log out
+    </a>
+  </aside>
+
+  <!-- MOBILE TOPBAR TOGGLE -->
+  <button class="app-sidebar-toggle" id="app-sidebar-toggle" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="app-sidebar-overlay" id="app-sidebar-overlay"></div>
+
+  <!-- MAIN -->
+  <div class="app-main">
+
+    <header class="app-topbar">
+      <div>
+        <p class="app-topbar-eyebrow">Overview</p>
+        <h1 class="app-topbar-title">Good afternoon </h1>
+      </div>
+      <div class="app-topbar-actions">
+        <button class="icon-btn" aria-label="Notifications">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M10 2.5a5 5 0 0 0-5 5v3l-1.5 2.5h13L15 10.5v-3a5 5 0 0 0-5-5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 16a2 2 0 0 0 4 0" stroke="currentColor" stroke-width="1.5"/></svg>
+          <span class="icon-dot"></span>
+        </button>
+        <div class="app-avatar">JR</div>
+      </div>
+    </header>
+
+    <div class="app-content">
+
+      <!-- STATS -->
+      <div class="stat-row reveal in-view">
+        <div class="stat-card">
+          <span class="stat-label">Next session</span>
+          <span class="stat-value">2 days</span>
+          <span class="stat-sub">Thu, Jul 30 · 4:00 PM</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Sessions completed</span>
+          <span class="stat-value">14</span>
+          <span class="stat-sub">Since March 2026</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Current streak</span>
+          <span class="stat-value">6 weeks</span>
+          <span class="stat-sub">No sessions missed</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Unread messages</span>
+          <span class="stat-value">2</span>
+          <span class="stat-sub">From Dr. Reyes</span>
+        </div>
+      </div>
+
+      <!-- UPCOMING SESSION -->
+      <div class="session-card reveal in-view" data-delay="1">
+        <div class="session-photo">
+          <img src="https://images.unsplash.com/photo-1749222013825-fe2025dcf0cf?fm=jpg&q=80&w=400&auto=format&fit=crop" alt="Dr. Naomi Reyes">
+        </div>
+        <div class="session-info">
+          <span class="eyebrow">Upcoming session</span>
+          <h2>With Dr. Naomi Reyes</h2>
+          <p class="session-meta">Thursday, July 30 · 4:00-4:50 PM · Video session</p>
+        </div>
+        <div class="session-actions">
+          <a href="#" class="btn btn-primary">Join video session</a>
+          <a href="#" class="btn btn-ghost">Reschedule</a>
+        </div>
+      </div>
+
+      <!-- TWO COLUMN: THERAPIST + MESSAGES -->
+      <div class="dash-columns">
+        <div class="therapist-mini reveal in-view" data-delay="0">
+          <span class="eyebrow">Your therapist</span>
+          <div class="therapist-mini-body">
+            <img src="https://images.unsplash.com/photo-1749222013825-fe2025dcf0cf?fm=jpg&q=80&w=200&auto=format&fit=crop" alt="Dr. Naomi Reyes">
+            <div>
+              <h3>Dr. Naomi Reyes</h3>
+              <p>Clinical Psychologist, PsyD</p>
+            </div>
+          </div>
+          <div class="t-tags"><span>Anxiety</span><span>Trauma</span><span>EMDR</span></div>
+          <a href="#" class="btn btn-ghost btn-full" style="margin-top:20px;">Send a message</a>
+        </div>
+
+        <div class="messages-panel reveal in-view" data-delay="1">
+          <div class="panel-head">
+            <span class="eyebrow" style="margin:0;">Recent messages</span>
+            <a href="#" class="link-arrow">View all →</a>
+          </div>
+          <div class="message-item unread">
+            <img src="https://images.unsplash.com/photo-1749222013825-fe2025dcf0cf?fm=jpg&q=80&w=100&auto=format&fit=crop" alt="Dr. Naomi Reyes">
+            <div>
+              <div class="message-top"><strong>Dr. Naomi Reyes</strong><span>2h ago</span></div>
+              <p>Just a reminder to fill out the check-in before Thursday's session, whenever you get a chance.</p>
+            </div>
+          </div>
+          <div class="message-item unread">
+            <img src="https://images.unsplash.com/photo-1749222013825-fe2025dcf0cf?fm=jpg&q=80&w=100&auto=format&fit=crop" alt="Dr. Naomi Reyes">
+            <div>
+              <div class="message-top"><strong>Dr. Naomi Reyes</strong><span>1d ago</span></div>
+              <p>Glad this week felt a bit lighter. Let's build on that Thursday.</p>
+            </div>
+          </div>
+          <div class="message-item">
+            <div class="message-icon">🎉</div>
+            <div>
+              <div class="message-top"><strong>Mental Alchemy</strong><span>3d ago</span></div>
+              <p>You've hit a 6-week streak with no missed sessions — nice work staying consistent.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MOOD CHECK-IN -->
+      <div class="mood-widget reveal in-view">
+        <span class="eyebrow">Quick check-in</span>
+        <h3>How are you feeling today?</h3>
+        <div class="mood-options" id="mood-options">
+          <button class="mood-btn" data-mood="Low">😔<span>Low</span></button>
+          <button class="mood-btn" data-mood="Uneasy">😕<span>Uneasy</span></button>
+          <button class="mood-btn" data-mood="Okay">🙂<span>Okay</span></button>
+          <button class="mood-btn" data-mood="Good">😊<span>Good</span></button>
+          <button class="mood-btn" data-mood="Great">😄<span>Great</span></button>
+        </div>
+        <p class="mood-response" id="mood-response" hidden></p>
+      </div>
+
+      <!-- RESOURCES -->
+      <div class="resources-section reveal in-view">
+        <div class="panel-head">
+          <span class="eyebrow" style="margin:0;">Recommended for you</span>
+          <a href="#" class="link-arrow">Browse all →</a>
+        </div>
+        <div class="resource-grid">
+          <a href="#" class="resource-card">
+            <div class="resource-icon">🌱</div>
+            <h4>Grounding techniques for anxious moments</h4>
+            <p>5 min read</p>
+          </a>
+          <a href="#" class="resource-card">
+            <div class="resource-icon">📓</div>
+            <h4>How to get more out of journaling between sessions</h4>
+            <p>4 min read</p>
+          </a>
+          <a href="#" class="resource-card">
+            <div class="resource-icon">🌙</div>
+            <h4>Building a wind-down routine that actually sticks</h4>
+            <p>6 min read</p>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
